@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
     <title>Aldair</title>
+    <script>
+        const base_url  ='<?php echo BASE_URL; ?>';
+    </script>
 </head>
 
 <body>
@@ -120,7 +123,7 @@
                     <div class="mb-3 row">
                         <label for="rol" class="col-sm-4 col-form-label">Rol:</label>
                         <div class="col-sm-8">
-                            <select class="form-select" id="rol" name="" required>
+                            <select class="form-select" id="rol" name="rol" required>
                                 <option selected>Opciones</option>
                                 <option value="1">admi</option>
                                 <option value="2">Gerente</option>
@@ -139,4 +142,5 @@
 <script src="<?php echo BASE_URL; ?>view/function/user.js"></script>
 <script src="<?php echo BASE_URL; ?>view/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
