@@ -30,7 +30,7 @@
                         <a class="nav-link" href="#">products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">categories</a>
+                        <a class="nav-link" href="http://localhost/DPWEB/categories">categories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">clients</a>

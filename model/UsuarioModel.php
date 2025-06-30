@@ -6,7 +6,8 @@ class UsuarioModel {
         $this->conexion = new Conexion ();
         $this->conexion = $this->conexion->connect();
     }
-    public function registrar($nro_identidad, $razon_social	,$telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol, $password	){
+    public function registrar($nro_identidad, $razon_social	,$telefono, $correo, $departamento, $provincia, $distrito, $cod_postal, $direccion, $rol, $password	)
+    {
         $consulta ="INSERT INTO persona (nro_identidad, razon_social ,telefono, correo, departamento, provincia, distrito, cod_postal, direccion, rol, password) VALUES ('$nro_identidad', '$razon_social'	,'$telefono', '$correo', '$departamento', '$provincia', '$distrito', '$cod_postal', '$direccion', '$rol', '$password')";
         $sql = $this->conexion->query( $consulta);
         if ($sql) {
