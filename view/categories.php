@@ -12,6 +12,21 @@
     </script>
 </head>
 
+<style>
+    
+    .container-fluid{
+        background-color: red;
+        
+
+    }
+    .card-header{
+        background-color: black;
+        color: white;
+    }
+    
+</style>
+
+
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -85,6 +100,8 @@
                     <button type="button" class="btn btn-danger">Cancelar</button>
                 </div>
             </form>
+
+
         </div>
     </div>
 </body>
