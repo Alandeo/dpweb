@@ -7,8 +7,10 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      background: linear-gradient(to right,rgb(221, 103, 30), #acb6e5);
       font-family: 'Segoe UI', sans-serif;
+      
+      
     }
 
     .login-container {
@@ -25,6 +27,7 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
       border-radius: 10px;
       width: 300px;
+      
     }
 
     .login-box h2 {
@@ -53,20 +56,25 @@
     }
 
     .login-box button:hover {
-      background: #0056b3;
+      background:rgb(179, 113, 0);
     }
   </style>
+  <script>
+    const base_url = '<?php BASE_URL; ?> ';
+  </script>
 </head>
 <body>
   <div class="login-container">
     <div class="login-box">
       <h2>Iniciar Sesión</h2>
-      <form>
-        <input type="text" placeholder="Usuario" required>
-        <input type="password" placeholder="Contraseña" required>
-        <button type="submit">Entrar</button>
+      <form id="frm_login">
+        <input type="text" placeholder="Usuario" id="usuario" name="usuario" required>
+        <input type="password" placeholder="Contraseña" id="password"  name="password" required >
+        <button type="button" onclick="iniciar_sesion();">Entrar</button>
       </form>
     </div>
   </div>
+  <script src="<?=BASE_URL; ?>view/function/user.js"></script>
 </body>
 </html>
+                                                                                                                                                                                                     
