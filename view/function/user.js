@@ -78,7 +78,15 @@ async function iniciar_sesion() {
             cache: 'no-cache',
             body: datos
         });
-        
+
+        let json =  await respuesta.json();
+        // validamos que json.status sea = true
+        if (json.status) { //true
+            location.replace(base_url + 'new-user'); // Redirige al usuario a la página de nuevo usuario si el inicio de sesión es exitoso
+        } else {
+            alert(json.msg);  // Muestra un mensaje de error si el inicio de sesión falla
+        }
+
     } catch (error) {
         console.log(error);
         
