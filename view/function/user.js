@@ -1,4 +1,5 @@
-function validar_form() {
+function validar_form()
+ {
     /*Esta función verifica que todos los campos estén llenos antes de registrar. */
     let nro_ducumento = document.getElementById("nro_identidad").value;
     let razon_social = document.getElementById("razon_social").value;
@@ -25,7 +26,7 @@ function validar_form() {
 
 
     registrarUsuario();
-/*Bloque para evitar que el formulario se envíe solo: */
+    /*Bloque para evitar que el formulario se envíe solo: */
 }
 if (document.querySelector('#frm_user')) {
     //evita que se envie el formulario
@@ -75,14 +76,14 @@ async function iniciar_sesion() {
     try {
         const datos = new FormData(frm_login);  /*Captura el formulario de login. */
         /*Envía los datos al PHP para que verifique si el usuario existe y si la contraseña es correcta. */
-         let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
             body: datos
         });
 
-        let json =  await respuesta.json();  /*Espera la respuesta en formato JSON. */
+        let json = await respuesta.json();  /*Espera la respuesta en formato JSON. */
         // validamos que json.status sea = true
         if (json.status) { //true
             location.replace(base_url + 'new-user'); // Redirige al usuario a la página de nuevo usuario si el inicio de sesión es exitoso
@@ -92,7 +93,7 @@ async function iniciar_sesion() {
 
     } catch (error) {
         console.log(error);
-        
+
 
     }
 
