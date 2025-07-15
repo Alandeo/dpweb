@@ -1,28 +1,30 @@
+<?php                                              // Inicio del archivo PHP
+require_once "./model/views_model.php";            // Importa el archivo del modelo de vistas
 
-<?php
-require_once "./model/views_model.php";
-
-class viewsControl extends viewModel
+class viewsControl extends viewModel               // Define una clase llamada viewsControl que hereda de viewModel
 {
-    public function getPlantillaControl()
+    public function getPlantillaControl()          // Función para obtener la plantilla principal del sistema
     {
-        return require_once "./view/plantilla.php";
+        return require_once "./view/plantilla.php"; // Retorna e incluye el archivo plantilla.php (estructura base)
     }
-    public function getViewControl()
+
+    public function getViewControl()               // Función que decide qué vista mostrar al usuario
     {
-        session_start();
-        if (isset($_SESSION['ventas_id'])) {
+        session_start();                           // Inicia la sesión para acceder a las variables $_SESSION
 
+        if (isset($_SESSION['ventas_id'])) {       // Si el usuario ha iniciado sesión (variable de sesión existe)
 
-            if (isset($_GET["views"])) {
-                $ruta = explode("/", $_GET["views"]);
-                $response = viewModel::get_view($ruta[0]);
+            if (isset($_GET["views"])) {           // Verifica si hay una vista solicitada en la URL (por ejemplo, ?views=productos)
+                $ruta = explode("/", $_GET["views"]); // Divide el valor de views por "/" (por si hay subrutas)
+                $response = viewModel::get_view($ruta[0]); // Llama al modelo para obtener la vista correspondiente
             } else {
-                $response = "index.php";
+                $response = "index.php";           // Si no se especificó vista, carga la página principal
             }
-        }else {
-            $response = "login";
+
+        } else {
+            $response = "login";                   // Si no hay sesión iniciada, envía al usuario al login
         }
-        return $response;
+
+        return $response;                          // Devuelve el nombre del archivo que se debe cargar
     }
 }

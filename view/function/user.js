@@ -1,4 +1,5 @@
 function validar_form() {
+    /*Esta función verifica que todos los campos estén llenos antes de registrar. */
     let nro_ducumento = document.getElementById("nro_identidad").value;
     let razon_social = document.getElementById("razon_social").value;
     let telefono = document.getElementById("telefono").value;
@@ -10,6 +11,7 @@ function validar_form() {
     let direccion = document.getElementById("direccion").value;
     let rol = document.getElementById("rol").value;
 
+    /*Si algún campo está vacío, muestra un mensaje de error con SweetAlert y detiene el registro (return;). */
     if (nro_ducumento == "" || razon_social == "" || telefono == "" || correo == "" || departamento
         == "" || provincia == "" || distrito == "" || cod_postal == "" || direccion == "" || rol == "") {
         Swal.fire({
@@ -23,7 +25,7 @@ function validar_form() {
 
 
     registrarUsuario();
-
+/*Bloque para evitar que el formulario se envíe solo: */
 }
 if (document.querySelector('#frm_user')) {
     //evita que se envie el formulario
@@ -61,17 +63,18 @@ async function registrarUsuario() {
 }
 
 
-
+/*Esta función se encarga de verificar que el usuario exista y que la contraseña sea correcta. */
 async function iniciar_sesion() {
     let usuario = document.getElementById("usuario").value;
     let password = document.getElementById("password").value;
-    if (usuario == "" || password == "") {
+    if (usuario == "" || password == "") {  /* Si hay campos vacíos, detiene el proceso y muestra error. */
         alert("Error, campos vacios!");
         return;
 
     }
     try {
-        const datos = new FormData(frm_login);
+        const datos = new FormData(frm_login);  /*Captura el formulario de login. */
+        /*Envía los datos al PHP para que verifique si el usuario existe y si la contraseña es correcta. */
          let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
             method: 'POST',
             mode: 'cors',
@@ -79,7 +82,7 @@ async function iniciar_sesion() {
             body: datos
         });
 
-        let json =  await respuesta.json();
+        let json =  await respuesta.json();  /*Espera la respuesta en formato JSON. */
         // validamos que json.status sea = true
         if (json.status) { //true
             location.replace(base_url + 'new-user'); // Redirige al usuario a la página de nuevo usuario si el inicio de sesión es exitoso

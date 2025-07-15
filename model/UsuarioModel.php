@@ -1,7 +1,8 @@
 <?php
+/*Importa el archivo conexion.php, que contiene la clase para conectarse a la base de datos.*/
 require_once ("../library/conexion.php");
 class UsuarioModel {
-    private $conexion;
+    private $conexion;   /*Se usará internamente en esta clase para conectarse a la base de datos. */
     function __construct(){
         $this->conexion = new Conexion ();
         $this->conexion = $this->conexion->connect();
