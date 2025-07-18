@@ -14,12 +14,12 @@ function validar_form() {
     /*Si algún campo está vacío, muestra un mensaje de error con SweetAlert y detiene el registro (return;). */
     if (nro_ducumento == "" || razon_social == "" || telefono == "" || correo == "" || departamento
         == "" || provincia == "" || distrito == "" || cod_postal == "" || direccion == "" || rol == "") {
-        Swal.fire({
+        Swal.fire({   /*Se llama a Swal.fire() que es parte de la librería SweetAlert2 (una forma más bonita de mostrar alertas). */
             icon: "error",
             title: "Oops...",
             text: "campos vacíos ",
         });
-        return;
+        return;  /*Al llegar aquí, la función se detiene y no continúa con el registro */
     }
 
 
@@ -27,37 +27,37 @@ function validar_form() {
     registrarUsuario();
 /*Bloque para evitar que el formulario se envíe solo: */
 }
-if (document.querySelector('#frm_user')) {
+if (document.querySelector('#frm_user')) {  /* Si ese formulario existe en la página, entonces ejecuta lo que está dentro del if */
     //evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_user');
+    let frm_user = document.querySelector('#frm_user'); /* Aquí se guarda el formulario en una variable llamada frm_user, para poder usarlo más abajo. */
     frm_user.onsubmit = function (e) {
-        e.preventDefault();
-        validar_form();
+        e.preventDefault();  /*Esto detiene el envío automático del formulario. */
+        validar_form();  /*Llama a la función validar_form() para verificar si todos los campos están llenos. */
     }
 }
 
 async function registrarUsuario() {
     try {
         // capturar campos de formulario(HTML)
-        const datos = new FormData(frm_user);
+        const datos = new FormData(frm_user);   /* Crea un objeto FormData a partir del formulario HTML (frm_user).  */
         // enviar datos a controlador
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=registrar', {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=registrar', {  //fetch() es una función para hacer solicitudes HTTP (como GET o POST) desde JavaScript.
             method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
+            mode: 'cors',  // Significa que el navegador permitirá que esta solicitud se haga entre diferentes dominios o puertos, si el servidor lo permite.
+            cache: 'no-cache',  // Le dice al navegador: no guardes esta solicitud en caché.
             body: datos
         });
-        let json = await respuesta.json();
+        let json = await respuesta.json();  /*Convierte la respuesta que devuelve el archivo PHP a formato JSON. */
         //validadamos que json.status sea = true
-        if (json.status) { //true
+        if (json.status) { //true  ... Si json.status es true, significa que el usuario se registró correctamente.
             alert(json.msg);
-            document.getElementById('frm_user').reset();
+            document.getElementById('frm_user').reset();    // Luego reinicia el formulario (borra los campos).
         } else {
-            alert(json.msg);
+            alert(json.msg);   // Si json.status es false, muestra el mensaje de error enviado por PHP
         }
 
 
-    } catch (error) {
+    } catch (error) {       //  Si algo falla (por ejemplo, no hay conexión, o fetch no funciona), muestra el error en la consola para depuración.
         console.log("Error al registrar Usuario:" + error);
     }
 }
