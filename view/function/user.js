@@ -1,5 +1,4 @@
-function validar_form()
- {
+function validar_form() {
     /*Esta función verifica que todos los campos estén llenos antes de registrar. */
     let nro_ducumento = document.getElementById("nro_identidad").value;
     let razon_social = document.getElementById("razon_social").value;
@@ -97,6 +96,23 @@ async function iniciar_sesion() {
 
     }
 
+}
+
+async function view_users() {
+    try {
+        // Enviar datos al controlador
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_Usuarios', {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        });
+
+    } catch (error) {
+        console.log("Error al obtener usuarios: " + error);
+    }
+}
+if (document.getElementById('content_users')) {
+    view_users();
 }
 
 

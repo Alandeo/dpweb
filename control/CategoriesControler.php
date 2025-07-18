@@ -27,3 +27,4 @@ if ($tipo == "registrar") {                          // Si el tipo es "registrar
 
     echo json_encode($arrResponse);                  // Convierte la respuesta a JSON y la envía al navegador
 }
+
