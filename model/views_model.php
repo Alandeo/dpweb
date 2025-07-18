@@ -1,7 +1,4 @@
 
-/*Es un archivo que ayuda al sistema a decidir qué página debe mostrarse en el navegador. */
-
-
 <?php
 class viewModel{
      protected static function get_view($view){
@@ -21,4 +18,5 @@ Por ejemplo: si $view = "products", busca el archivo view/products.php. */
         return $content; /*Devuelve la ruta del archivo que se debe cargar. */
      }
 }
+/*Sirve para decidir qué archivo (vista) debe mostrar el sistema al usuario. */
 ?>
