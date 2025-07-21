@@ -64,9 +64,9 @@
                         <div class="col-sm-8">
                             <select class="form-select" id="rol" name="rol" required>
                                 <option selected>Opciones</option>
-                                <option value="1">admi</option>
-                                <option value="2">Gerente</option>
-                                <option value="3">Trabajador</option>
+                                <option value="admi">admi</option>
+                                <option value="Gerente">Gerente</option>
+                                <option value="Trabajador">Trabajador</option>
                             </select>
                         </div>
                     </div>
