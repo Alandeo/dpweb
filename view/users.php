@@ -9,6 +9,7 @@
                 <th>Correo</th>
                 <th>Rol</th>
                 <th>Estado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody id="content_users">
@@ -17,4 +18,4 @@
     </table>
 </div>
 <script src="<?= BASE_URL ?>view/function/user.js"></script>
- <!--<script>view_users();</script>
+ <!--<script>view_users();</script> -->
