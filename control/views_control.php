@@ -20,7 +20,6 @@
                 } else {
                     $response = "index.php";           // Si no se especificó vista, carga la página principal
                 }
-
             } else {
                 $response = "login";                   // Si no hay sesión iniciada, envía al usuario al login
             }
