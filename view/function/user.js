@@ -1,4 +1,4 @@
-function validar_form() {
+function validar_form(tipo) {
     /*Esta función verifica que todos los campos estén llenos antes de registrar. */
     let nro_ducumento = document.getElementById("nro_identidad").value;
     let razon_social = document.getElementById("razon_social").value;
@@ -21,18 +21,22 @@ function validar_form() {
         });
         return;  /*Al llegar aquí, la función se detiene y no continúa con el registro */
     }
-
-
-
-    registrarUsuario();
-    /*Bloque para evitar que el formulario se envíe solo: */
+    if (tipo == "nuevo") {
+       registrarUsuario();    
+    }
+    if (tipo == "actualizar") {
+       actualizarUsuario();    
+    }
+ 
+ 
 }
+
 if (document.querySelector('#frm_user')) {  /* Si ese formulario existe en la página, entonces ejecuta lo que está dentro del if */
     //evita que se envie el formulario
     let frm_user = document.querySelector('#frm_user'); /* Aquí se guarda el formulario en una variable llamada frm_user, para poder usarlo más abajo. */
     frm_user.onsubmit = function (e) {
         e.preventDefault();  /*Esto detiene el envío automático del formulario. */
-        validar_form();  /*Llama a la función validar_form() para verificar si todos los campos están llenos. */
+        validar_form("nuevo");  /*Llama a la función validar_form() para verificar si todos los campos están llenos. */
     }
 }
 
@@ -171,5 +175,17 @@ async function edit_user() {
 
 }
 
+if (document.querySelector('#frm_edit_user')) { 
+    //evita que se envie el formulario
+    let frm_user = document.querySelector('#frm_edit_user'); 
+    frm_user.onsubmit = function (e) {
+        e.preventDefault(); 
+        validar_form("actualizar");  
+    }
+}
+
+async function  actualizarUsuario() {
+    alert ("actualizar");
+}
 
 
