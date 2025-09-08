@@ -22,13 +22,13 @@ function validar_form(tipo) {
         return;  /*Al llegar aquí, la función se detiene y no continúa con el registro */
     }
     if (tipo == "nuevo") {
-       registrarUsuario();    
+        registrarUsuario();
     }
     if (tipo == "actualizar") {
-       actualizarUsuario();    
+        actualizarUsuario();
     }
- 
- 
+
+
 }
 
 if (document.querySelector('#frm_user')) {  /* Si ese formulario existe en la página, entonces ejecuta lo que está dentro del if */
@@ -123,6 +123,7 @@ async function view_users() {
                 <td>${user.estado || ''} </td>
                 <td>
                 <a href="`+ base_url + `edit-user/` + user.id + ` ">Editar</a>
+                <button onclick=" delete_user(${user.id})" >eliminar</button> 
                 </td>
                 </tr>`;
             })
@@ -175,17 +176,67 @@ async function edit_user() {
 
 }
 
-if (document.querySelector('#frm_edit_user')) { 
+if (document.querySelector('#frm_edit_user')) {
     //evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_edit_user'); 
+    let frm_user = document.querySelector('#frm_edit_user');
     frm_user.onsubmit = function (e) {
-        e.preventDefault(); 
-        validar_form("actualizar");  
+        e.preventDefault();
+        validar_form("actualizar");
     }
 }
 
-async function  actualizarUsuario() {
-    alert ("actualizar");
+//actualizar 
+async function actualizarUsuario() {
+    const datos = new FormData(frm_edit_user);
+    let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: datos
+    });
+    json = await respuesta.json();
+    if (!json.status) {
+        alert("Ooooooops,  ocurrio un error al actualizar, intentelo nuevamente");
+        console.log(json.msg);
+        return;
+    }else{
+        alert(json.msg);
+    }
 }
+
+// eliminar usuario
+async function delete_user(id) {
+    if (!confirm("¿Seguro que deseas eliminar este usuario?")) {
+        return;
+    }
+
+    const datos = new FormData();
+    datos.append("id_persona", id);
+
+    let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=eliminar', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        body: datos
+    });
+
+    let json = await respuesta.json();
+
+    if (!json.status) {
+        alert("Ooooops, ocurrió un error al eliminar");
+        console.log(json.msg);
+        return;
+    } else {
+        alert(json.msg);
+        if (typeof view_users === "function") {
+            view_users(); // refrescar lista
+        }
+    }
+}
+
+
+
+
+
 
 
