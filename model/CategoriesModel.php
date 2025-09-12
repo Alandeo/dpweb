@@ -24,11 +24,30 @@ Recibe dos datos desde el formulario: */
             return 0; /*Devuelve 0, lo que indica que no se pudo insertar. */
         }
     }
-/*Verifica si una categoría ya existe */
-    public function existeCategoria($nombre)
+
+    /*consultas de sql de categories */
+    
+    public function existeCategoria($nombre) 
     {
-        $consulta = "SELECT * FROM categoria WHERE nombre = '$nombre'";
-        $sql = $this->conexion->query($consulta);   /*Ejecuta la consulta SQL y guarda el resultado en $sql.*/
-        return $sql->num_rows;  /*Devuelve la cantidad de filas que encontró la consulta: */
+        $consulta = "SELECT * FROM categoria WHERE nombre = '$nombre'";  
+        $sql = $this->conexion->query($consulta); 
+        return $sql->num_rows; 
     }
+        // Obtener todas las categorías
+    public function getCategories() {
+        $consulta = "SELECT * FROM categoria";
+        $sql = $this->conexion->query($consulta);
+        $data = [];
+        while ($row = $sql->fetch_assoc()) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+    
+
+
 }
+
+
+
+

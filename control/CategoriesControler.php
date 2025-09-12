@@ -28,3 +28,9 @@ if ($tipo == "registrar") {                          // Si el tipo es "registrar
     echo json_encode($arrResponse);                  // Convierte la respuesta a JSON y la envía al navegador
 }
 
+
+// Obtener todas las categorías
+if ($tipo == "listar") {
+    $data = $objCategoria->getCategories();
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+}
