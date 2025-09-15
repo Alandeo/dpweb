@@ -77,5 +77,36 @@
             </form>
         </div>
     </div>
+
+   <style>     
+/*  estilos de new usuario*/
+.conteiner-fluid {
+    background: #f8f9fa;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background: #24036bff;
+    color: white;
+    }
+
+.col-form-label {
+    color: #1021a0ff;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    border: 1px solid #d62a2aff;
+    border-radius: 4px;
+   
+}
+</style>   
     <!--Fin de cuerpo  de pagina-->
 <script src="<?php echo BASE_URL; ?>view/function/user.js"></script>

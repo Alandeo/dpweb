@@ -77,8 +77,8 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success">Actualizar</button>
-                    <a href="<?php echo BASE_URL; ?>users" class="btn btn-danger">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <a href="<?php echo BASE_URL; ?>users" class="btn btn-danger">Cancelar</a>
 
                 </div>
             </form>

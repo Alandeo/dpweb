@@ -57,5 +57,15 @@
         </form>
     </div>
 </div>
+<style>
+        .container-fluid{
+        background-color: red;
+        
 
+    }
+    .card-header{
+        background-color: black;
+        color: white;
+    }
+</style>
 <script src="<?php echo BASE_URL; ?>view/function/Products.js"></script>

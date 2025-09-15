@@ -122,10 +122,11 @@ async function view_users() {
                 <td>${user.rol || ''}</td>
                 <td>${user.estado || ''} </td>
                 <td>
-                <a href="`+ base_url + `edit-user/` + user.id + ` ">Editar</a>
-                <button onclick=" delete_user(${user.id})" >eliminar</button> 
+               <a href="`+ base_url + `edit-user/` + user.id + `" class="btn btn-success">Editar</a>
+               <button onclick="delete_user(`+ user.id + `)" class="btn btn-danger">Eliminar</button>
                 </td>
-                </tr>`;
+              </tr>`;
+
             })
             document.getElementById('content_users').innerHTML = html;
         } else {
@@ -237,5 +238,5 @@ async function delete_user(id) {
 
 
 
-// desde aca se modificooooooooooooooooooooooooooooooooooooooooooooo
+
 

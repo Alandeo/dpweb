@@ -67,3 +67,14 @@
 <script>
     edit_product();
 </script>
+
+
+
+
+<style>
+
+.card-header {
+    background-color: black; 
+    color: white;            
+}
+</style>

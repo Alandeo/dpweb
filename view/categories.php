@@ -1,9 +1,10 @@
-<div class="container">
-    <div class="p-2 pt-1 pb-1" style="justify-content: space-between; display: flex; background-color: #90ee90; border:solid 5px #000;">
-        <h1 style="font-weight:900; font-family: Arial;">Lista de Categorías</h1>
-        <button style="font-weight:700" type="button" class="btn btn-success">
-            <a class="nav-link" href="<?php echo BASE_URL; ?>new-categories">Nueva Categoría</a>
-        </button>
+<div class="container mt-4">
+    <!-- Encabezado con fondo degradado y sombra -->
+    <div class="d-flex justify-content-between align-items-center p-3 mb-3 rounded shadow" style="background: linear-gradient(90deg, #0d6efd, #6610f2);">
+        <h1 class="text-white fw-bold m-0" style="font-family: 'Verdana'; font-size: 1.8rem;">📂 Categorías Registradas</h1>
+        <a href="<?php echo BASE_URL; ?>new-products" class="btn btn-outline-light fw-bold">
+            <i class="bi bi-plus-circle"></i>  Agregar Nueva
+        </a>
     </div>
     <table class="table table-bordered table-striped">
         <thead>
@@ -22,3 +23,8 @@
 
 <!-- Script para manejar las categorías -->
 <script src="<?php echo BASE_URL; ?>view/function/Categories.js"></script>
+
+
+
+
+    

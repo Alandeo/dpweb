@@ -34,3 +34,18 @@
 <script>
     edit_category();
 </script>
+
+
+
+<style>
+.container {
+    background-color: red; /* Fondo rojo para el contenedor */
+}
+
+.card-header {
+    background-color: black; /* Fondo negro para el encabezado */
+    color: white;            /* Texto blanco */
+}
+</style>
+
+

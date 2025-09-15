@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+    
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
+    <!--el link de bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <title>Aldair</title>
     <script>
         const base_url = '<?php echo BASE_URL; ?>';
@@ -12,9 +15,12 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    
+  <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Logo</a>
+              <!-- hace visible y funcional el carrito de Bootstrap Icons dentro de tu barra de navegación -->
+           <a class="navbar-brand d-flex align-items-center" href="#">
+           <i class="bi bi-cart-fill me-2"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,3 +67,4 @@
             </div>
         </div>
     </nav>
+    

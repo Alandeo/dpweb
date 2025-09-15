@@ -19,6 +19,43 @@
 
         </tbody>
     </table>
+    <style>
+
+
+.container {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(6, 6, 133, 0.1);
+    color: #2723b0ff;
+    margin: 20px auto;
+}
+
+
+.container h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    
+}
+
+
+.btn-info {
+    background: #1f17b8ff;
+    border-color: #c03d1cff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+.table thead th {
+    background-color: #3c24b4ff;
+    color: white;
+    text-align: center;
+    border-color: #2bba0eff;
+}
+</style>
 </div>
 <script src="<?= BASE_URL ?>view/function/user.js"></script>
 <!--<script>view_users();</script> -->
