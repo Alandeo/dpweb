@@ -1,36 +1,79 @@
 <?php
 
-require_once("../model/CategoriesModel.php");        // Incluye el modelo de categorías para usar sus funciones
-$objCategoria = new CategoriesModel();               // Crea un nuevo objeto de la clase CategoriesModel para poder usar sus métodos
+require_once("../model/CategoriesModel.php");
+$objCategoria = new CategoriesModel();
 
-$tipo = $_GET['tipo'];                               // Obtiene el valor del parámetro "tipo" desde la URL
+$tipo = $_GET['tipo'];
 
-if ($tipo == "registrar") {                          // Si el tipo es "registrar", se ejecuta el bloque de código para registrar una nueva categoría.
-    $nombre = $_POST['nombre'];                      // Recoge los valores que el usuario escribió en el formulario:
-    $detalle = $_POST['detalle'];                    // Recoge los valores que el usuario escribió en el formulario:
+if ($tipo == "registrar") {
+    $nombre = $_POST['nombre'];
+    $detalle = $_POST['detalle'];
 
-    if ($nombre == "" || $detalle == "") {           // Verifica si los campos están vacíos
-        $arrResponse = array('status' => false, 'msg' => 'Error: Campos vacíos');   // Devuelve mensaje de error
+    if ($nombre == "" || $detalle == "") {
+        $arrResponse = array('status' => false, 'msg' => 'Error: Campos vacíos');
     } else {
-        $existe = $objCategoria->existeCategoria($nombre);  // Verifica si ya existe una categoría con ese nombre
-        if ($existe > 0) {                            // Si ya existe, muestra mensaje de error
+        $existe = $objCategoria->existeCategoria($nombre);
+        if ($existe > 0) {
             $arrResponse = array('status' => false, 'msg' => 'Error: Categoría ya existe');
         } else {
-            $respuesta = $objCategoria->registrar($nombre, $detalle);  // Si no existe, llama al método registrar() para guardar la nueva categoría en la base de datos.
-            if ($respuesta) {                        //  Verifica Si el registro fue exitoso...
+            $respuesta = $objCategoria->registrar($nombre, $detalle);
+            if ($respuesta) {
                 $arrResponse = array('status' => true, 'msg' => 'Categoría registrada correctamente');
-            } else {                                  // Si falló el registro...
+            } else {
                 $arrResponse = array('status' => false, 'msg' => 'Error al registrar la categoría');
             }
         }
     }
 
-    echo json_encode($arrResponse);                  // Convierte la respuesta a JSON y la envía al navegador
+    echo json_encode($arrResponse);
 }
+
 
 
 // Obtener todas las categorías
 if ($tipo == "listar") {
     $data = $objCategoria->getCategories();
     echo json_encode($data, JSON_UNESCAPED_UNICODE);
+}
+
+
+
+
+// Obtener datos de una categoría por ID (para editar)
+if ($tipo == "ver") {
+    $id = intval($_GET['id']);
+    $data = $objCategoria->getCategory($id);
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+}
+
+// Actualizar categoría
+if ($tipo == "actualizar") {
+    $id = intval($_POST['id']);
+    $nombre = $_POST['nombre'];
+    $detalle = $_POST['detalle'];
+
+    if ($nombre == "" || $detalle == "") {
+        $arrResponse = array('status' => false, 'msg' => 'Error: Campos vacíos');
+    } else {
+        $respuesta = $objCategoria->actualizar($id, $nombre, $detalle);
+        if ($respuesta) {
+            $arrResponse = array('status' => true, 'msg' => 'Categoría actualizada correctamente');
+        } else {
+            $arrResponse = array('status' => false, 'msg' => 'Error al actualizar la categoría');
+        }
+    }
+    echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+}
+
+// Eliminar categoría
+if ($tipo == "eliminar") {
+    $id = intval($_POST['id']);
+    $respuesta = $objCategoria->eliminar($id);
+
+    if ($respuesta) {
+        $arrResponse = array('status' => true, 'msg' => 'Categoría eliminada correctamente');
+    } else {
+        $arrResponse = array('status' => false, 'msg' => 'Error al eliminar la categoría');
+    }
+    echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 }

@@ -1,38 +1,36 @@
 <?php
-/*Importa el archivo que contiene la clase Conexion, para poder conectarse a la base de datos. */
-require_once("../library/conexion.php");
 
-class CategoriesModel/*Esta clase contiene funciones (métodos) para trabajar con categorías. */
+require_once("../library/conexion.php");  // Importa la clase de conexión a la base de datos
+
+class CategoriesModel  // Clase que maneja las operaciones relacionadas con las categorías
 {
-    private $conexion; /*Se declara una propiedad privada para guardar la conexión a la base de datos. */
-/*Conecta a la base de datos */
-    function __construct()
-    {   /*Crea un nuevo objeto Conexion (que viene del archivo que cargamos al inicio). */
-        $this->conexion = new Conexion();
-        $this->conexion = $this->conexion->connect();
-    }
-/*Guarda una nueva categoría */
-  /*Sirve para guardar una nueva categoría en la base de datos.
-Recibe dos datos desde el formulario: */
-    public function registrar($nombre, $detalle)
+    private $conexion;   // Variable para almacenar la conexión a la base de datos
+
+    function __construct()  // Constructor de la clase que inicializa la conexión a la base de datos
     {
-        $consulta = "INSERT INTO categoria (nombre, detalle) VALUES ('$nombre', '$detalle')";
-        $sql = $this->conexion->query($consulta); /*Ejecuta la consulta SQL en la base de datos usando la conexión guardada. */
+        $this->conexion = new Conexion();  // Crea una nueva instancia de la clase Conexion
+        $this->conexion = $this->conexion->connect(); // Llama al método connect() para establecer la conexión a la base de datos
+    }
+
+    public function registrar($nombre, $detalle)  // Método para registrar una nueva categoría en la base de datos
+    {
+        $consulta = "INSERT INTO categoria (nombre, detalle) VALUES ('$nombre', '$detalle')";  // Crea la consulta SQL para insertar una nueva categoría
+        // Ejecuta la consulta SQL en la base de datos
+        $sql = $this->conexion->query($consulta);
         if ($sql) {
-            return $this->conexion->insert_id;/*Si  es verdadero Devuelve el ID del nuevo registro insertado (gracias a insert_id). */
+            return $this->conexion->insert_id; // Si la consulta se ejecuta correctamente, obtiene el ID del último registro insertado
         } else {
-            return 0; /*Devuelve 0, lo que indica que no se pudo insertar. */
+            return 0;  // Si hay un error al ejecutar la consulta, devuelve 0
         }
     }
 
-    /*consultas de sql de categories */
-    
     public function existeCategoria($nombre) 
     {
         $consulta = "SELECT * FROM categoria WHERE nombre = '$nombre'";  
         $sql = $this->conexion->query($consulta); 
         return $sql->num_rows; 
     }
+    
         // Obtener todas las categorías
     public function getCategories() {
         $consulta = "SELECT * FROM categoria";
@@ -46,8 +44,31 @@ Recibe dos datos desde el formulario: */
     
 
 
-}
 
+
+        // Obtener una categoría por su ID
+    public function getCategory($id) {
+        $consulta = "SELECT * FROM categoria WHERE id = $id LIMIT 1";
+        $sql = $this->conexion->query($consulta);
+        return $sql->fetch_assoc();
+    }
+
+    // Actualizar una categoría
+    public function actualizar($id, $nombre, $detalle) {
+        $consulta = "UPDATE categoria SET nombre = '$nombre', detalle = '$detalle' WHERE id = $id";
+        $sql = $this->conexion->query($consulta);
+        return $sql ? true : false;
+    }
+
+    // Eliminar una categoría
+    public function eliminar($id) {
+        $consulta = "DELETE FROM categoria WHERE id = $id";
+        $sql = $this->conexion->query($consulta);
+        return $sql ? true : false;
+    }
+
+    
+}
 
 
 

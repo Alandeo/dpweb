@@ -21,4 +21,4 @@
 </div>
 
 <!-- Script para manejar las categorías -->
-<script src="<?php echo BASE_URL; ?>view/function/categories.js"></script>
+<script src="<?php echo BASE_URL; ?>view/function/Categories.js"></script>
