@@ -2,7 +2,7 @@
     <!-- Encabezado con fondo degradado y sombra -->
     <div class="d-flex justify-content-between align-items-center p-3 mb-3 rounded shadow" style="background: linear-gradient(90deg, #0d6efd, #6610f2);">
         <h1 class="text-white fw-bold m-0" style="font-family: 'Verdana'; font-size: 1.8rem;">📂 Categorías Registradas</h1>
-        <a href="<?php echo BASE_URL; ?>new-products" class="btn btn-outline-light fw-bold">
+        <a href="<?php echo BASE_URL; ?>new-categories" class="btn btn-outline-light fw-bold">
             <i class="bi bi-plus-circle"></i>  Agregar Nueva
         </a>
     </div>

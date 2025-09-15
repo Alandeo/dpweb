@@ -13,8 +13,9 @@
         const base_url = '<?php echo BASE_URL; ?>';
     </script>
 </head>
-
-<body>
+<!--la imagen -->
+<body  style="background-image:url(https://img.freepik.com/fotos-premium/sistema-punto-venta-o-caja-registradora-escritorio_493806-18395.jpg?semt=ais_incoming&w=740&q=80);">
+    
     
   <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container-fluid">
