@@ -17,8 +17,11 @@
     ?>
 </head>
 
-<body style="background-color: #ddeaffff;">
-    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #bb691bff; font-weight: bold; font-size: 1.1rem;">
+
+
+
+<body  style="background-image:url(https://img.freepik.com/fotos-premium/sistema-punto-venta-o-caja-registradora-escritorio_493806-18395.jpg?semt=ais_incoming&w=740&q=80);">
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark" style="background-color: #273eceff; font-weight: bold; font-size: 1.1rem;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="font-size: 1.7rem;">🛒</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
