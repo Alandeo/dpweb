@@ -1,5 +1,4 @@
 <?php
-
 const BD_HOST = 'localhost';
 const BD_NAME = '';
 const BD_USER = '';
