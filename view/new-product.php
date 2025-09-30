@@ -37,7 +37,7 @@
                 <div class="mb-3 row">
                     <label for="id_categoria" class="col-sm-4 col-form-label">Categoria :</label>
                     <div class="col-sm-8">
-                        <select name="id_categoria" id="id_categoria">
+                        <select class="form-control" name="id_categoria" id="id_categoria" required>
                             <option value="">Seleccione</option>
                         </select>
                     </div>
@@ -45,7 +45,9 @@
                 <div class="mb-3 row">
                     <label for="id_proveedor" class="col-sm-4 col-form-label">Proveedor :</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" id="id_proveedor" name="id_proveedor" required>
+                        <select class="form-control" id="id_proveedor" name="id_proveedor" required>
+                            <option value="">Seleccione Proveedor</option>
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -71,4 +73,5 @@
 <script src="<?php echo BASE_URL; ?>view/function/product.js"></script>
 <script>
     cargar_categorias();
+    cargar_proveedores();
 </script>

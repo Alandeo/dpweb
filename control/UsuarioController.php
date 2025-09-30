@@ -132,3 +132,21 @@ if ($tipo == "eliminar") {
     }
     echo json_encode($respuesta);
 }
+
+
+
+
+
+
+// Nuevo tipo para ver proveedores
+$tipo = $_GET['tipo'] ?? '';
+
+if ($tipo == "ver_proveedores") {
+    $proveedores = $objPersona->verProveedores();
+    $respuesta = ['status' => false, 'data' => []];
+    if (count($proveedores) > 0) {
+        $respuesta = ['status' => true, 'data' => $proveedores];
+    }
+    echo json_encode($respuesta);
+    exit;
+}

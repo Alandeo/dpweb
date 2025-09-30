@@ -1,9 +1,11 @@
 <?php
 require_once("../model/ProductoModel.php");
 require_once("../model/CategoriaModel.php");
+require_once("../model/UsuarioModel.php");
 
 $objProducto = new ProductoModel();
 $objCategoria = new CategoriaModel();
+$objUsuario = new UsuarioModel();
 
 $tipo = $_GET['tipo'];
 
