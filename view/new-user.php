@@ -67,6 +67,7 @@
                                 <option value="" disabled selected>Seleccione</option>
                                 <option value="Administrador">Administrador</option>
                                 <option value="Vendedor">Vendedor</option>
+                                <option value="Proveedor">Proveedor</option>
                             </select>
                         </div>
                     </div>
