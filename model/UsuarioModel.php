@@ -33,6 +33,8 @@ class UsuarioModel
     }
     public function verUsuarios()
     {
+        /* aca es añadir al condicion por ejemplo WHERE rol = 'cliente'
+         */
         $arr_usuarios = array();
         $consulta = "SELECT * FROM persona";
         $sql = $this->conexion->query($consulta);
