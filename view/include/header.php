@@ -42,13 +42,16 @@
                         <a class="nav-link" href="<?= BASE_URL ?>category">Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Clients</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>cliente">Clients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Shops</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sales</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL ?>proveedor">proveedor</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

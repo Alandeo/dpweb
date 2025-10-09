@@ -131,15 +131,23 @@ if ($tipo == "eliminar") {
         $respuesta = array('status' => false, 'msg' => $resultado);
     }
     echo json_encode($respuesta);
+
+}
+
+//ver clientes
+if ($tipo == "ver_clientes") {
+    $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
+    $usuarios = $objPersona->verClientes();
+    if (count($usuarios)) {
+        $respuesta = array('status' => true, 'msg' => '', 'data' => $usuarios);
+    }
+    echo json_encode($respuesta);
 }
 
 
 
 
-
-
 // Nuevo tipo para ver proveedores
-$tipo = $_GET['tipo'] ?? '';
 
 if ($tipo == "ver_proveedores") {
     $proveedores = $objPersona->verProveedores();

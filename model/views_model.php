@@ -3,7 +3,7 @@ class viewModel
 {
     protected static function get_view($view)
     {
-        $white_list = ["home", "products", "users", "new-user","edit-user", "products", "new-product", "edit-product", "category", "new-category", "edit-category", "orders", "order-details", "profile", "settings"];
+        $white_list = ["home", "products", "users", "new-user","edit-user", "products", "new-product", "edit-product", "category", "new-category", "edit-category", "orders", "order-details", "profile", "settings", "cliente", "proveedor"];
         if (in_array($view, $white_list)) {
             if (is_file("./view/" . $view . ".php")) {
                 $content = "./view/" . $view . ".php";
