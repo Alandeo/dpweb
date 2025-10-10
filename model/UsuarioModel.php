@@ -68,7 +68,7 @@ class UsuarioModel
     public function verProveedores()
     {
         $arr_proveedores = array();
-        $consulta = "SELECT id, nro_identidad, razon_social 
+        $consulta = "SELECT * 
                  FROM persona 
                  WHERE rol='proveedor'";
         $sql = $this->conexion->query($consulta);
