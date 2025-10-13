@@ -36,7 +36,7 @@ class UsuarioModel
         /* aca es añadir al condicion por ejemplo WHERE rol = 'cliente'
          */
         $arr_usuarios = array();
-        $consulta = "SELECT * FROM persona";
+        $consulta = "SELECT * FROM persona  WHERE NOT rol IN ('cliente','proveedor')";
         $sql = $this->conexion->query($consulta);
         while ($objeto = $sql->fetch_object()) {
             array_push($arr_usuarios, $objeto);
