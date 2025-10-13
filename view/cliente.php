@@ -1,8 +1,8 @@
 <div class="container">
     <div class="arriba">
-        <h3 class="mt-3" style="color: white;">LISTA DE CLIENTES</h3>
+        <h3 class="mt-3 text-center fw-bold text-uppercase" style="color: #ff8c00;">👤LISTA DE CLIENTES</h3>
         <h3 class="new-cliente">
-            <a class="nav-link" href="<?php echo BASE_URL; ?>new-cliente">new cliente</a>
+            <a href="<?= BASE_URL ?>new-cliente" class="btn btn-success">Nuevo +</a>
         </h3>
         <h3 class="users">
             <a class="nav-link" href="<?php echo BASE_URL; ?>users">Usuarios</a>

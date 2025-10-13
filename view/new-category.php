@@ -2,7 +2,7 @@
 <!-- INICIO DE CUERPO DE PÁGINA -->
     <div class="container-fluid">
         <div class="card">
-            <h5 class="card-header">Registro de Categoria</h5>
+            <h5 class="card-header">📝🗂️Registro de Categoria</h5>
             
             <form id="frm_category" action="" method="">
                 <div class="card-body">

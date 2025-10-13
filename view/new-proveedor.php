@@ -1,10 +1,9 @@
-
-<!-- INICIO DE CUERPO DE PÁGINA -->
+    <!-- INICIO DE CUERPO DE PÁGINA -->
     <div class="container-fluid">
         <div class="card">
-            <h5 class="card-header">📝Registro de Usuario</h5>
+            <h5 class="card-header">📝🚚Registro de Proveedores</h5>
             
-            <form id="frm_user" action="" method="">
+            <form id="frm_cliente" action="" method="">
                 <div class="card-body">
                     <div class="mb-3 row">
                         <label for="nro_identidad" class="col-sm-4 col-form-label">Nro de Documento :</label>
@@ -63,17 +62,12 @@
                     <div class="mb-3 row">
                         <label for="rol" class="col-sm-4 col-form-label">Rol :</label>
                         <div class="col-sm-8">
-                            <select class="form-control" name="rol" id="rol" required>
-                                <option value="" disabled selected>Seleccione</option>
-                                <option value="Administrador">Administrador</option>
-                                <option value="Vendedor">Vendedor</option>
-                                <option value="Proveedor">Proveedor</option>
-                            </select>
+                            <input type="text" value="proveedor" class="form-control" id="rol" name="rol" readonly>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">Registrar</button>
                     <button type="reset" class="btn btn-info">Limpiar</button>
-                    <a href="<?= BASE_URL ?>users" class="btn btn-danger">Cancelar</a>
+                    <a href="<?= BASE_URL ?>proveedor" class="btn btn-danger">Cancelar</a>
                 </div>
             </form>
         </div>

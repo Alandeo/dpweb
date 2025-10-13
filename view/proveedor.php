@@ -1,8 +1,8 @@
 <div class="container">
     <div class="arriba">
-        <h3 class="mt-3" style="color: white;">LISTA DE PROVEEDORES</h3>
+        <h3 class="mt-3 text-center fw-bold text-uppercase" style="color: #8A2BE2;">🚚 🚚LISTA DE PROVEEDORES</h3>
         <h3 class="new-proveedor">
-            <a class="nav-link" href="<?php echo BASE_URL; ?>new-proveedor">new proveedor</a>
+            <a href="<?= BASE_URL ?>new-proveedor" class="btn btn-outline-danger    ">Nuevo +</a>
         </h3>
         <h3 class="users">
             <a class="nav-link" href="<?php echo BASE_URL; ?>users">Usuarios</a>

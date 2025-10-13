@@ -30,42 +30,42 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#">🏠Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>users">Users</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>users">👤Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>products">Products</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>products">📦Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>category">Categories</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>category">🗂️Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>cliente">Clients</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>cliente">👥Clients</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Shops</a>
+                        <a class="nav-link" href="#">🏬Shops</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sales</a>
+                        <a class="nav-link" href="#">💰Sales</a>
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>proveedor">proveedor</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>proveedor">🚚proveedor</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <ul class="navbar-nav px-4">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
+                               ⬇️ Dropdown
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">🧍‍♂️Perfil</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                                <li><a class="dropdown-item" href="#">🔓Logout</a></li>
                             </ul>
                         </li>
                         <li>

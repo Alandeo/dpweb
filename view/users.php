@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="mt-3 mb-3">Lista de Usuario</h3>
+    <h3 class="mt-3 mb-3">🧑‍💻Lista de Usuario</h3>
     <table class="table table-bordered table-striped">
         <a href="<?php echo BASE_URL; ?>new-user" class="btn btn-info">
             New User
