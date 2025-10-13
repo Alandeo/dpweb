@@ -18,26 +18,26 @@ function validar_form(tipo) {
         return;
     }
     if (tipo == "nuevo") {
-        registrarUsuario();
+        registrarCliente();
     }
     if (tipo == "actualizar") {
-        actualizarUsuario();
+        actualizarCliente();
     }
 
 }
 
-if (document.querySelector('#frm_user')) {
+if (document.querySelector('#frm_cliente')) {
     // evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_user');
-    frm_user.onsubmit = function (e) {
+    let frm_cliente = document.querySelector('#frm_cliente');
+    frm_cliente.onsubmit = function (e) {
         e.preventDefault();
         validar_form("nuevo");
     }
 }
-async function registrarUsuario() {
+async function registrarCliente() {
     try {
         //capturar campos de formulario (HTML)
-        const datos = new FormData(frm_user);
+        const datos = new FormData(frm_cliente);
         //enviar datos a controlador
         let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=registrar', {
             method: 'POST',
@@ -49,54 +49,25 @@ async function registrarUsuario() {
         // validamos que json.status sea = True
         if (json.status) { //true
             alert(json.msg);
-            document.getElementById('frm_user').reset();
+            document.getElementById('frm_cliente').reset();
         } else {
             alert(json.msg);
         }
     } catch (e) {
-        console.log("Error al registrar Usuario:" + e);
+        console.log("Error al registrar Cliente:" + e);
     }
 }
 
-
-async function iniciar_sesion() {
-    let usuario = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    if (usuario == "" || password == "") {
-        alert("Error, campos vacios!");
-        return;
-    }
+// ver clientes
+async function view_clientes() {
     try {
-        const datos = new FormData(frm_login);
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            body: datos
-        });
-        // -------------------------
-        let json = await respuesta.json();
-        // validamos que json.status sea = True
-        if (json.status) { //true
-            location.replace(base_url + 'new-user');
-        } else {
-            alert(json.msg);
-        }
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-async function view_users() {
-    try {
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_usuarios', {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_clientes', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
         });
         json = await respuesta.json();
-        contenidot = document.getElementById('content_users');
+        contenidot = document.getElementById('content_clientes');
         if (json.status) {
             let cont = 1;
             json.data.forEach(usuario => {
@@ -116,7 +87,7 @@ async function view_users() {
                             <td>${usuario.rol}</td>
                             <td>${estado}</td>
                             <td>
-                                <a class="btn btn-primary" href="`+ base_url + `edit-user/` + usuario.id + `">Editar</a>
+                                <a class="btn btn-primary" href="`+ base_url + `edit-clients/` + usuario.id + `">Editar</a>
                                 <button class="btn btn-danger" onclick="fn_eliminar(` + usuario.id + `);">Eliminar</button>
                             </td>
                 `;
@@ -125,14 +96,16 @@ async function view_users() {
             });
         }
     } catch (error) {
-        console.log('error en mostrar usuario ' + e);
+        console.log('error en mostrar Cliente ' + e);
     }
 }
-if (document.getElementById('content_users')) {
-    view_users();
+if (document.getElementById('content_clientes')) {
+    view_clientes();
 }
 
-async function edit_user() {
+
+// editar cliente
+async function edit_cliente() {
     try {
         let id_persona = document.getElementById('id_persona').value;
         const datos = new FormData();
@@ -164,17 +137,17 @@ async function edit_user() {
         console.log('oops, ocurrió un error ' + error);
     }
 }
-if (document.querySelector('#frm_edit_user')) {
+if (document.querySelector('#frm_edit_cliente')) {
     // evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_edit_user');
+    let frm_user = document.querySelector('#frm_edit_cliente');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("actualizar");
     }
 }
 
-async function actualizarUsuario() {
-    const datos = new FormData(frm_edit_user);
+async function actualizarCliente() {
+    const datos = new FormData(frm_edit_cliente);
     let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
         method: 'POST',
         mode: 'cors',
@@ -190,18 +163,16 @@ async function actualizarUsuario() {
         alert(json.msg);
     }
 }
-async function fn_eliminar(id) {
-    const confirmar = window.confirm("¿Confirmar eliminación?");
-    if (confirmar) {
-        await eliminar(id);
-    }
-}
 
+
+
+// eliminar cliente
 async function fn_eliminar(id) {
     if (window.confirm("Confirmar eliminar?")) {
         eliminar(id);
     }
 }
+
 async function eliminar(id) {
     let datos = new FormData();
     datos.append('id_persona', id);
@@ -218,8 +189,6 @@ async function eliminar(id) {
         return;
     }else{
         alert(json.msg);
-        location.replace(base_url + 'users');
+        location.replace(base_url + 'clients');
     }
 }
-
-

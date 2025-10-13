@@ -55,13 +55,14 @@ class UsuarioModel
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
-    public function eliminar($id)
+
+    
+ public function eliminar($id)
     {
         $consulta = "DELETE FROM persona WHERE id='$id'";
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
-
 
 
     // Obtener lista de proveedores

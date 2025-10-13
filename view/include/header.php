@@ -42,7 +42,7 @@
                         <a class="nav-link" href="<?= BASE_URL ?>category">🗂️Categories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= BASE_URL ?>cliente">👥Clients</a>
+                        <a class="nav-link" href="<?= BASE_URL ?>clients">👥Clients</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">🏬Shops</a>

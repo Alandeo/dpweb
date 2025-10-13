@@ -50,6 +50,6 @@
     </div>
 
 </div>
-<script src="<?php echo BASE_URL; ?>view/function/user.js"></script>
+<script src="<?php echo BASE_URL; ?>view/function/clients.js"></script>
 <!--
 <script>view_users();</script>-->

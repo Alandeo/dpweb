@@ -1,7 +1,7 @@
 <!-- INICIO DE CUERPO DE PÁGINA -->
     <div class="container-fluid">
         <div class="card">
-            <h5 class="card-header">📝👤Registro de Cliente</h5>
+            <h5 class="card-header">Registro de Cliente</h5>
             
             <form id="frm_cliente" action="" method="">
                 <div class="card-body">
@@ -73,4 +73,4 @@
         </div>
     </div>
 <!-- FIN DE CUERPO DE PÁGINA -->
- <script src="<?php echo BASE_URL; ?>view/function/user.js"></script>
+ <script src="<?php echo BASE_URL; ?>view/function/clients.js"></script>

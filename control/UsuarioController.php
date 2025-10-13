@@ -131,7 +131,6 @@ if ($tipo == "eliminar") {
         $respuesta = array('status' => false, 'msg' => $resultado);
     }
     echo json_encode($respuesta);
-
 }
 
 //ver clientes
@@ -158,3 +157,6 @@ if ($tipo == "ver_proveedores") {
     echo json_encode($respuesta);
     exit;
 }
+
+
+

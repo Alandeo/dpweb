@@ -18,26 +18,26 @@ function validar_form(tipo) {
         return;
     }
     if (tipo == "nuevo") {
-        registrarUsuario();
+        registrarProveedor();
     }
     if (tipo == "actualizar") {
-        actualizarUsuario();
+        actualizarProveedor();
     }
 
 }
 
-if (document.querySelector('#frm_user')) {
+if (document.querySelector('#frm_proveedor')) {
     // evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_user');
-    frm_user.onsubmit = function (e) {
+    let frm_proveedor = document.querySelector('#frm_proveedor');
+    frm_proveedor.onsubmit = function (e) {
         e.preventDefault();
         validar_form("nuevo");
     }
 }
-async function registrarUsuario() {
+async function registrarProveedor() {
     try {
         //capturar campos de formulario (HTML)
-        const datos = new FormData(frm_user);
+        const datos = new FormData(frm_proveedor);
         //enviar datos a controlador
         let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=registrar', {
             method: 'POST',
@@ -49,54 +49,26 @@ async function registrarUsuario() {
         // validamos que json.status sea = True
         if (json.status) { //true
             alert(json.msg);
-            document.getElementById('frm_user').reset();
+            document.getElementById('frm_proveedor').reset();
         } else {
             alert(json.msg);
         }
     } catch (e) {
-        console.log("Error al registrar Usuario:" + e);
+        console.log("Error al registrar Proveedor:" + e);
     }
 }
 
 
-async function iniciar_sesion() {
-    let usuario = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-    if (usuario == "" || password == "") {
-        alert("Error, campos vacios!");
-        return;
-    }
+// ver proveedores
+async function view_proveedor() {
     try {
-        const datos = new FormData(frm_login);
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=iniciar_sesion', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            body: datos
-        });
-        // -------------------------
-        let json = await respuesta.json();
-        // validamos que json.status sea = True
-        if (json.status) { //true
-            location.replace(base_url + 'new-user');
-        } else {
-            alert(json.msg);
-        }
-
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-async function view_users() {
-    try {
-        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_usuarios', {
+        let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=ver_proveedores', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
         });
         json = await respuesta.json();
-        contenidot = document.getElementById('content_users');
+        contenidot = document.getElementById('content_proveedor');
         if (json.status) {
             let cont = 1;
             json.data.forEach(usuario => {
@@ -116,7 +88,7 @@ async function view_users() {
                             <td>${usuario.rol}</td>
                             <td>${estado}</td>
                             <td>
-                                <a class="btn btn-primary" href="`+ base_url + `edit-user/` + usuario.id + `">Editar</a>
+                                <a class="btn btn-primary" href="`+ base_url + `edit-proveedor/` + usuario.id + `">Editar</a>
                                 <button class="btn btn-danger" onclick="fn_eliminar(` + usuario.id + `);">Eliminar</button>
                             </td>
                 `;
@@ -125,14 +97,16 @@ async function view_users() {
             });
         }
     } catch (error) {
-        console.log('error en mostrar usuario ' + e);
+        console.log('error en mostrar proveedor ' + e);
     }
 }
-if (document.getElementById('content_users')) {
-    view_users();
+if (document.getElementById('content_proveedor')) {
+    view_proveedor();
 }
 
-async function edit_user() {
+
+// editar cliente
+async function edit_proveedor() {
     try {
         let id_persona = document.getElementById('id_persona').value;
         const datos = new FormData();
@@ -164,17 +138,17 @@ async function edit_user() {
         console.log('oops, ocurrió un error ' + error);
     }
 }
-if (document.querySelector('#frm_edit_user')) {
+if (document.querySelector('#frm_edit_proveedor')) {
     // evita que se envie el formulario
-    let frm_user = document.querySelector('#frm_edit_user');
+    let frm_user = document.querySelector('#frm_edit_proveedor');
     frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("actualizar");
     }
 }
 
-async function actualizarUsuario() {
-    const datos = new FormData(frm_edit_user);
+async function actualizarProveedor() {
+    const datos = new FormData(frm_edit_proveedor);
     let respuesta = await fetch(base_url + 'control/UsuarioController.php?tipo=actualizar', {
         method: 'POST',
         mode: 'cors',
@@ -190,18 +164,16 @@ async function actualizarUsuario() {
         alert(json.msg);
     }
 }
-async function fn_eliminar(id) {
-    const confirmar = window.confirm("¿Confirmar eliminación?");
-    if (confirmar) {
-        await eliminar(id);
-    }
-}
 
+
+
+// eliminar proveedor
 async function fn_eliminar(id) {
     if (window.confirm("Confirmar eliminar?")) {
         eliminar(id);
     }
 }
+
 async function eliminar(id) {
     let datos = new FormData();
     datos.append('id_persona', id);
@@ -218,8 +190,6 @@ async function eliminar(id) {
         return;
     }else{
         alert(json.msg);
-        location.replace(base_url + 'users');
+        location.replace(base_url + 'proveedor');
     }
 }
-
-
