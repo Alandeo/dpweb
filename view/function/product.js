@@ -137,3 +137,28 @@ async function cargar_proveedores() {
 
 
 
+//eliminar producto
+async function fn_eliminar(id) {
+    if (!confirm("¿Deseas eliminar este producto?")) return;
+
+    try {
+        let respuesta = await fetch(base_url + 'control/ProductoController.php?tipo=eliminar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id })
+        });
+
+        let json = await respuesta.json();
+
+        if (json.status) {
+            alert(json.msg);
+            // Eliminar la fila de la tabla sin recargar
+            let fila = document.getElementById("fila" + id);
+            if (fila) fila.remove();
+        } else {
+            alert(json.msg);
+        }
+    } catch (e) {
+        console.error("Error al eliminar producto:", e);
+    }
+}

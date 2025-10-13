@@ -53,6 +53,6 @@ class CategoriaModel
         $consulta = "DELETE FROM categoria WHERE id='$id'";
         $sql = $this->conexion->query($consulta);
         return $sql;
-    }
+    }   
     
 }

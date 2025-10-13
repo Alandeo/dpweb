@@ -79,3 +79,24 @@ if ($tipo === "registrar") {
     }
     exit;
 }
+
+
+
+//eliminar producto
+if ($tipo === "eliminar") {
+    // Recibir datos desde JS en formato JSON
+    $data = json_decode(file_get_contents('php://input'), true);
+    $id = $data['id'] ?? 0;
+
+    if ($id > 0) {
+        $eliminar = $objProducto->eliminar($id); // tu método en ProductoModel
+        if ($eliminar) {
+            echo json_encode(['status' => true, 'msg' => 'Producto eliminado correctamente']);
+        } else {
+            echo json_encode(['status' => false, 'msg' => 'No se pudo eliminar']);
+        }
+    } else {
+        echo json_encode(['status' => false, 'msg' => 'ID inválido']);
+    }
+    exit;
+}
