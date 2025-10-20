@@ -5,14 +5,16 @@
     </div>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr>
+              <tr>
                 <th>Nro</th>
                 <th>Código</th>
                 <th>Nombre</th>
+                <th>Detalle</th>
                 <th>Precio</th>
                 <th>Stock</th>
                 <th>Categoria</th>
                 <th>F.V.</th>
+                <th>Proveedor</th>
                 <th>Acciones</th>
             </tr>
         </thead>

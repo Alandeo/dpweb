@@ -9,15 +9,20 @@ class ProductoModel
         $this->conexion = $this->conexion->connect();
     }
     
+      // obtener todos los productos
     public function verProductos()
     {
-        $arr_categorias = array();
-        $consulta = "SELECT * FROM producto";
+        $arr_productos = array();
+        $consulta = "SELECT p.id, p.codigo, p.nombre, p.detalle, p.precio, p.stock, c.nombre AS categoria, p.fecha_vencimiento, pr.razon_social AS proveedor
+                 FROM producto p
+                 INNER JOIN categoria c ON p.id_categoria = c.id
+                 INNER JOIN persona pr ON p.id_proveedor = pr.id
+                 WHERE pr.rol = 'proveedor'";
         $sql = $this->conexion->query($consulta);
         while ($objeto = $sql->fetch_object()) {
-            array_push($arr_categorias, $objeto);
+            array_push($arr_productos, $objeto);
         }
-        return $arr_categorias;
+        return $arr_productos;
     }
     public function existeCodigo($codigo)
     {
