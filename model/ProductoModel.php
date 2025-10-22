@@ -8,8 +8,7 @@ class ProductoModel
         $this->conexion = new Conexion();
         $this->conexion = $this->conexion->connect();
     }
-    
-      // obtener todos los productos
+    // obtener todos los productos
     public function verProductos()
     {
         $arr_productos = array();
@@ -37,23 +36,17 @@ class ProductoModel
         $sql = $this->conexion->query($consulta);
         return $sql->num_rows;
     }
+    // Registrar nuevo producto
     public function registrar($codigo, $nombre, $detalle, $precio, $stock, $id_categoria, $fecha_vencimiento, $imagen, $id_proveedor)
     {
-        $codigo            = $this->conexion->real_escape_string($codigo);
-        $nombre            = $this->conexion->real_escape_string($nombre);
-        $detalle           = $this->conexion->real_escape_string($detalle);
-        $precio            = floatval($precio);
-        $stock             = intval($stock);
-        $id_categoria      = intval($id_categoria);
-        $fecha_vencimiento = $this->conexion->real_escape_string($fecha_vencimiento);
-        $id_proveedor      = intval($id_proveedor);
-        $imagen            = $this->conexion->real_escape_string($imagen);
         $consulta = "INSERT INTO producto (codigo, nombre, detalle, precio, stock, id_categoria, fecha_vencimiento, imagen, id_proveedor) VALUES ('$codigo', '$nombre', '$detalle', $precio, $stock, $id_categoria, '$fecha_vencimiento', '$imagen', '$id_proveedor')";
         $sql = $this->conexion->query($consulta);
         if ($sql) {
-            return $this->conexion->insert_id;
+            $sql = $this->conexion->insert_id;
+        } else {
+            $sql = 0;
         }
-        return 0;
+        return $sql;
     }
     public function ver($id)
     {
@@ -61,16 +54,43 @@ class ProductoModel
         $sql = $this->conexion->query($consulta);
         return $sql->fetch_object();
     }
+    // editar producto
+    public function actualizar($id_producto, $codigo, $nombre, $detalle, $precio, $stock, $id_categoria, $fecha_vencimiento, $imagen, $id_proveedor)
+    {   // Escapar datos para evitar errores o inyecciones simples
+        $codigo = $this->conexion->real_escape_string($codigo);
+        $nombre = $this->conexion->real_escape_string($nombre);
+        $detalle = $this->conexion->real_escape_string($detalle);
+        $fecha_vencimiento = $this->conexion->real_escape_string($fecha_vencimiento);
+        $id_proveedor = (int)$id_proveedor;
+        $id_categoria = (int)$id_categoria;
+        $precio = (float)$precio;
+        $stock = (int)$stock;
+        $id_producto = (int)$id_producto;
 
-    public function actualizar($id_cat, $nombre, $detalle) {
-        $consulta = "UPDATE producto SET nombre='$nombre', detalle='$detalle' WHERE id='$id_cat'";
+        // Armar consulta según si hay imagen nueva o no
+        if (!empty($imagen)) {
+            $consulta = "UPDATE producto 
+                     SET codigo='$codigo', nombre='$nombre', detalle='$detalle', 
+                         precio=$precio, stock=$stock, id_categoria=$id_categoria, 
+                         fecha_vencimiento='$fecha_vencimiento', imagen='$imagen', 
+                         id_proveedor='$id_proveedor' 
+                     WHERE id='$id_producto'";
+        } else {
+            $consulta = "UPDATE producto 
+                     SET codigo='$codigo', nombre='$nombre', detalle='$detalle', 
+                         precio=$precio, stock=$stock, id_categoria=$id_categoria, 
+                         fecha_vencimiento='$fecha_vencimiento', 
+                         id_proveedor='$id_proveedor' 
+                     WHERE id='$id_producto'";
+        }
+
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
-     public function eliminar($id){
+    public function eliminar($id)
+    {
         $consulta = "DELETE FROM producto WHERE id='$id'";
         $sql = $this->conexion->query($consulta);
         return $sql;
     }
-    
 }

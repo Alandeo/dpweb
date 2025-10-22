@@ -1,3 +1,4 @@
+
 function validar_form(tipo) {
     let codigo = document.getElementById("codigo").value;
     let nombre = document.getElementById("nombre").value;
@@ -6,9 +7,9 @@ function validar_form(tipo) {
     let stock = document.getElementById("stock").value;
     let id_categoria = document.getElementById("id_categoria").value;
     let fecha_vencimiento = document.getElementById("fecha_vencimiento").value;
-    let imagen = document.getElementById("imagen").value;
+    //let imagen = document.getElementById("imagen").value;
     let id_proveedor = document.getElementById("id_proveedor").value;
-    if (codigo == "" || nombre == "" || detalle == "" || precio == "" || stock == "" || id_categoria == "" || fecha_vencimiento == "" || imagen == "" || id_proveedor == "") {
+    if (codigo == "" || nombre == "" || detalle == "" || precio == "" || stock == "" || id_categoria == "" || fecha_vencimiento == "" || id_proveedor == "") {
         Swal.fire({
             title: "Error campos vacios!",
             icon: "Error",
@@ -126,7 +127,7 @@ async function view_products() {
                 contenidot.appendChild(nueva_fila);
             });
         }
-    } catch (e) {
+    } catch (error) {
         console.log('error en mostrar producto ' + e);
     }
 }
@@ -167,20 +168,14 @@ async function edit_producto() {
         document.getElementById('id_categoria').value = json.data.id_categoria;
         document.getElementById('fecha_vencimiento').value = json.data.fecha_vencimiento;
         document.getElementById('id_proveedor').value = json.data.id_proveedor;
-                // ✅ Mostrar imagen actual del producto
-        if (json.data.imagen && json.data.imagen !== "") {
-            document.getElementById("preview_imagen").src = base_url + json.data.imagen;
-        } else {
-            // Imagen por defecto si no tiene
-            document.getElementById("preview_imagen").src = base_url + "uploads/productos/default.png";
-        }
     } catch (error) {
         console.log('oops, ocurrió un error ' + error);
     }
 }
 if (document.querySelector('#frm_edit_producto')) {
-    let frm_edit_producto = document.querySelector('#frm_edit_producto');
-    frm_edit_producto.onsubmit = function (e) {
+    // evita que se envie el formulario
+    let frm_user = document.querySelector('#frm_edit_producto');
+    frm_user.onsubmit = function (e) {
         e.preventDefault();
         validar_form("actualizar");
     }
@@ -203,6 +198,11 @@ async function actualizarProducto() {
         alert(json.msg);
     }
 }
+
+
+
+
+
 
 
 //eliminar producto

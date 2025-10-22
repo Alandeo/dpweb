@@ -65,7 +65,6 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Actualizar</button>
-                <button type="reset" class="btn btn-info">Limpiar</button>
                 <a href="<?= BASE_URL ?>products" class="btn btn-danger">Cancelar</a>
             </div>
         </form>
@@ -76,5 +75,7 @@
 <script>
     cargar_categorias();
     cargar_proveedores();
+</script>
+<script>
     edit_producto();
 </script>
