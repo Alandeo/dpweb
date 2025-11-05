@@ -53,6 +53,10 @@
                      <li class="nav-item">
                         <a class="nav-link" href="<?= BASE_URL ?>proveedor">🚚proveedor</a>
                     </li>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="<?= BASE_URL ?>vista-cliente">vista-cliente</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <ul class="navbar-nav px-4">
