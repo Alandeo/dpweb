@@ -1,51 +1,72 @@
-body {
-    background-color: #f5f5f5;
+/* Estilos básicos para mostrar productos en forma de tarjetas */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
 }
 
-.titulo-vista {
-    color: #21fd0d;
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-.producto-card {
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    background: #f0f0f4;
+.card {
+  width: 200px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.producto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.producto-card img {
-    height: 200px;
-    object-fit: cover;
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
+.card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+  color: #271a98;
 }
 
-.categoria {
-    font-size: 0.9rem;
-    color: #555;
+.card p {
+  color: #1e8a2b;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 
-.precio {
-    color: #198754;
-    font-weight: bold;
-    font-size: 1.1rem;
+.card button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
 }
 
-.btn-detalle {
-    border-radius: 20px;
+.card button:hover {
+  background-color: #0056b3;
 }
 
-.btn-carrito {
-    border-radius: 20px;
+p{
+    color: #007bff;
+    text-align: center; 
+      margin-top: 20px;
+        font-weight: bold;
+          font-size: 2rem; 
 }
