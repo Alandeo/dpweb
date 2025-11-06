@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NO TE VAYAS😭</title>
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>view/css/cliente.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script>
@@ -21,6 +21,6 @@
 </head>
 
 <script src="<?php echo BASE_URL; ?>view/function/vistacliente.js"></script>
-    <script src="<?php echo BASE_URL; ?>view/Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>view/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="<?php echo BASE_URL; ?>view/function/vistaC.js"></script>
