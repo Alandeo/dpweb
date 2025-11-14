@@ -56,5 +56,5 @@
         </div>
     </div>
 </div>
-<script src="<?= BASE_URL ?>view/function/vistacliente.js"></script>
+<script src="<?= BASE_URL ?>view/function/products.js"></script>
 <script src="<?= BASE_URL ?>view/function/venta.js"></script>

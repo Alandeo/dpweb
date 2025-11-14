@@ -194,19 +194,5 @@ if ($tipo == "eliminar") {
 
 
 
-// mostrar las targetas de productos (la vista del cliente)
-
-if (isset($_GET['tipo']) && $_GET['tipo'] == 'listarCliente') {
-    $productos = $objProducto->obtenerProductosCliente();
-    
-    if (count($productos) > 0) {
-        echo json_encode(['status' => true, 'data' => $productos]);
-    } else {
-        echo json_encode(['status' => false, 'msg' => 'No hay productos disponibles']);
-    }
-    exit;
-}
-
-
 
 

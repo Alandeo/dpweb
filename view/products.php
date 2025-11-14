@@ -5,7 +5,7 @@
     </div>
     <table class="table table-bordered table-striped">
         <thead>
-              <tr>
+            <tr>
                 <th>Nro</th>
                 <th>Código</th>
                 <th>Nombre</th>
@@ -14,6 +14,7 @@
                 <th>Stock</th>
                 <th>Categoria</th>
                 <th>F.V.</th>
+                <th>codigo barra</th>
                 <th>Proveedor</th>
                 <th>Acciones</th>
             </tr>
@@ -24,4 +25,4 @@
     </table>
 </div>
 <script src="<?= BASE_URL ?>view/function/products.js"></script>
-
+<script src="<?= BASE_URL ?>view/function/JsBarcode.all.min.js"></script>
