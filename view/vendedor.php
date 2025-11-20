@@ -1,9 +1,12 @@
 <div class="container-fluid mt-4 row">
-    <h2>Ventas</h2>
-    <div class="col-8">
+    <h2  class="mt-3 text-center fw-bold text-uppercase" style="color: #070607ff ; ">Realizar Ventas</h2> 
+    <div class="col-8 overflow-auto" style="max-height: 85vh;">
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Busqueda de Productos</h5>
+            <div class="card-body dispalfl" >
+                <div class="search-box d-flex">
+                    <h5 class="card-title" style="color: #23c7d3ff;" >Busqueda de Productos</h5>
+                    <input type="text" id="busqueda_venta" class="form-control" placeholder="Buscar..." onkeyup="viewProductosClients();">
+                </div>
                 <div class="row container-fluid" id="productos-container">
                     <!--<div class="card m-2 col-3">
                         <div class="card-body">
@@ -22,8 +25,8 @@
                 <h5 class="card-title">Lista de Compra</h5>
                 <div class="row" style="min-height: 500px;">
                     <div class="col-12">
-                        <table class="table">
-                            <thead>
+                        <table class="table" >
+                            <thead >
                                 <tr>
                                     <th>Producto</th>
                                     <th>Cantidad</th>
@@ -34,7 +37,7 @@
                             </thead>
                             <tbody id="lista_compra">
                                 <tr>
-                                    <td>Producto 1</td>
+                                    <td>Laptop</td>
                                     <td>2</td>
                                     <td>$10.00</td>
                                     <td>$20.00</td>

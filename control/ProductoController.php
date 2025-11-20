@@ -173,8 +173,8 @@ if ($tipo == "actualizar") {
             exit;
         }
     }
-}
 
+}
 
 
 //eliminar producto
@@ -189,10 +189,18 @@ if ($tipo == "eliminar") {
         $respuesta = array('status' => false, 'msg' => $resultado);
     }
     echo json_encode($respuesta);
+
 }
 
-
-
-
+// Buscar Producto por nombre o código
+if ($tipo == "buscar_producto_venta") {
+    $dato = $_POST['dato'];
+    $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
+    $productos = $objProducto->buscarProductoByNameOrCodigo($dato);
+    if (count($productos)) {
+        $respuesta = array('status' => true, 'msg' => '', 'data' => $productos);
+    }
+    echo json_encode($respuesta);
+}
 
 

@@ -124,7 +124,6 @@ async function view_products() {
                                 <button class="btn btn-danger" onclick="fn_eliminar(` + producto.id + `);">Eliminar</button>
                             </td>
 
-                            
                 `;
                 cont++;
                 contenidot.appendChild(nueva_fila);
@@ -247,17 +246,21 @@ async function eliminar(id) {
 // Ver Productos vista Cliente
 async function viewProductosClients() {
   try {
-    let respuesta = await fetch(base_url + 'control/ProductoController.php?tipo=ver_productos', {
+    let dato = document.getElementById('busqueda_venta').value;
+    const datos = new FormData();
+    datos.append('dato', dato);
+    let respuesta = await fetch(base_url + 'control/ProductoController.php?tipo=buscar_producto_venta', {
       method: 'POST',
       mode: 'cors',
-      cache: 'no-cache'
+      cache: 'no-cache',
+      body: datos
     });
 
     let json = await respuesta.json();
     let container = document.getElementById('productos-container');
     container.innerHTML = ''; // Limpia antes de insertar
     if (json.status) {
-      json.data.forEach(prod => {
+        json.data.forEach(prod => {
         let card = document.createElement("div");
         card.classList.add("col-12", "col-md-6", "col-lg-3", "mb-4");
         card.innerHTML=`<div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
@@ -282,4 +285,58 @@ async function viewProductosClients() {
 
 if (document.getElementById('productos-container')) {
     viewProductosClients();
+}
+
+
+
+async function view_products() {
+    try {
+        let respuesta = await fetch(base_url + 'control/ProductoController.php?tipo=ver_productos', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache'
+        });
+        json = await respuesta.json();
+        contenidot = document.getElementById('content_products');
+        if (json.status) {
+            let cont = 1;
+            json.data.forEach(producto => {
+                let nueva_fila = document.createElement("tr");
+                nueva_fila.id = "fila" + producto.id;
+                nueva_fila.className = "filas_tabla";
+                nueva_fila.innerHTML = `
+                            <td>${cont}</td>
+                            <td>${producto.codigo}</td>
+                            <td>${producto.nombre}</td>
+                            <td>${producto.detalle}</td>
+                            <td>${producto.precio}</td>
+                            <td>${producto.stock}</td>
+                            <td>${producto.categoria}</td>
+                            <td>${producto.fecha_vencimiento}</td>
+                            <td><svg id="barcode${producto.id}"></svg></td>
+                            <td>${producto.proveedor}</td>
+                            <td>
+                                <a class="btn btn-primary" href="`+ base_url + `edit-product/` + producto.id + `">Editar</a>
+                                <button class="btn btn-danger" onclick="fn_eliminar(` + producto.id + `);">Eliminar</button>
+                            </td>
+
+                            
+                `;
+                cont++;
+                contenidot.appendChild(nueva_fila);
+                JsBarcode("#barcode" + producto.id, "" + producto.codigo, {
+  format: "code128",
+  lineColor: "rgba(36, 64, 218, 1)",
+  width: 4,
+  height: 40,
+  displayValue: false
+});
+            });
+        }
+    } catch (error) {
+        console.log('error en mostrar producto ' + e);
+    }
+}
+if (document.getElementById('content_products')) {
+    view_products();
 }
