@@ -1,20 +1,18 @@
 <div class="container-fluid mt-4 row">
-    <h2  class="mt-3 text-center fw-bold text-uppercase" style="color: #070607ff ; ">Realizar Ventas</h2> 
-    <div class="col-8 overflow-auto" style="max-height: 85vh;">
+    <div class="col-8">
         <div class="card">
-            <div class="card-body dispalfl" >
-                <div class="search-box d-flex">
-                    <h5 class="card-title" style="color: #23c7d3ff;" >Busqueda de Productos</h5>
-                    <input type="text" id="busqueda_venta" class="form-control" placeholder="Buscar..." onkeyup="viewProductosClients();">
+            <div class="card-body ">
+                <h5 class="card-title text-center">Busqueda de Productos</h5>
+                <div class="search-box d-flex mb-3">
+                    <input type="text" class="form-control col-md-12" placeholder="buscar producto por codigo o nombre" id="busqueda_venta" onkeyup="viewProductosVendedor();">
+                    <input type="hidden" id="id_producto_venta">
+                    <input type="hidden" id="producto_precio_venta">
+                    <input type="hidden" id="producto_cantidad_venta" value="1">
                 </div>
-                <div class="row container-fluid" id="productos-container">
-                    <!--<div class="card m-2 col-3">
-                        <div class="card-body">
-                            <img src="https://www.agenciaeplus.com.br/wp-content/uploads/2021/12/pagina-de-produto.jpg" alt="" width="100%" height="150px">
-                            <p class="card-text">Descripcion del producto</p>
-                            <button class="btn btn-primary">Agregar</button>
-                        </div>
-                    </div>-->
+                <div class="overflow-auto" style="height: 75vmin;">
+                    <div class="row container-fluid" id="productos-container">
+                        <!-- Productos se cargan aquí dinámicamente -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -25,8 +23,8 @@
                 <h5 class="card-title">Lista de Compra</h5>
                 <div class="row" style="min-height: 500px;">
                     <div class="col-12">
-                        <table class="table" >
-                            <thead >
+                        <table class="table">
+                            <thead>
                                 <tr>
                                     <th>Producto</th>
                                     <th>Cantidad</th>
@@ -61,3 +59,11 @@
 </div>
 <script src="<?= BASE_URL ?>view/function/products.js"></script>
 <script src="<?= BASE_URL ?>view/function/venta.js"></script>
+<script>
+    let input = document.getElementById("busqueda_venta");
+    input.addEventListener('keydown', (event)=>{
+        if (event.key == 'Enter') {
+            agregar_producto_temporal();
+        }
+    })
+</script>
