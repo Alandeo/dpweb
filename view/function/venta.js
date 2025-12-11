@@ -25,7 +25,7 @@ async function agregar_producto_temporal() {
     datos.append('precio', precio);
     datos.append('cantidad', cantidad);
     try {
-        let respuesta = await fetch(base_url + 'control/ventaController.php.php?tipo=registrarTemporal', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=registrarTemporal', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
