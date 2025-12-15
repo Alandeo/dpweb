@@ -34,22 +34,16 @@
                                 </tr>
                             </thead>
                             <tbody id="lista_compra">
-                                <tr>
-                                    <td>Laptop</td>
-                                    <td>2</td>
-                                    <td>$10.00</td>
-                                    <td>$20.00</td>
-                                    <td><button class="btn btn-danger btn-sm">Eliminar</button></td>
-                                </tr>
+                                <!-- Productos agregados se cargarán aquí dinámicamente -->
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-end">
-                        <h4>Subtotal : <label id="">$20.00</label></h4>
-                        <h4>Igv : <label id="">$20.00</label></h4>
-                        <h4>Total : <label id="">$20.00</label></h4>
+                        <h4>Subtotal : <label id="subtotal_general"></label></h4>
+                        <h4>Igv : <label id="igv_general"></label></h4>
+                        <h4>Total : <label id="total"></label></h4>
                         <button class="btn btn-success">Realizar Venta</button>
                     </div>
                 </div>
@@ -61,9 +55,10 @@
 <script src="<?= BASE_URL ?>view/function/venta.js"></script>
 <script>
     let input = document.getElementById("busqueda_venta");
-    input.addEventListener('keydown', (event)=>{
+        input.addEventListener('keydown', (event)=>{
         if (event.key == 'Enter') {
             agregar_producto_temporal();
         }
-    })
+    });
+    listar_temporales();
 </script>

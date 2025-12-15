@@ -255,6 +255,8 @@ if (document.getElementById('productos-container')) {
     viewProductosClients();
 }
 
+
+
 // Ver Productos vista Vendedor
 async function viewProductosVendedor() {
   try {
