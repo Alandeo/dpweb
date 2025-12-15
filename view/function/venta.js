@@ -45,7 +45,7 @@ async function agregar_producto_temporal() {
 
 async function listar_temporales() {
     try {
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=listar_venta_temporal', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=listar_venta_temporal', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
