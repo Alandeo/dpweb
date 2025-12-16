@@ -38,7 +38,7 @@ async function agregar_producto_temporal(id_product = 0, price = 0, cant = 1) {
     datos.append('precio', precio);
     datos.append('cantidad', cantidad);
     try {
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=registrarTemporal', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=registrarTemporal', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -61,7 +61,7 @@ async function agregar_producto_temporal(id_product = 0, price = 0, cant = 1) {
 }
 async function listar_temporales() {
     try {
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=listar_venta_temporal', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=listar_venta_temporal', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
@@ -91,7 +91,7 @@ async function actualizar_subtotal(id, precio) {
         const datos = new FormData();
         datos.append('id', id);
         datos.append('cantidad', cantidad);
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=actualizar_cantidad', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=actualizar_cantidad', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -110,7 +110,7 @@ async function actualizar_subtotal(id, precio) {
 
 async function act_subt_general() {
     try {
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=listar_venta_temporal', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=listar_venta_temporal', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache'
@@ -166,7 +166,7 @@ async function registrarVenta() {
         const datos = new FormData();
         datos.append('id_cliente', id_cliente);
         datos.append('fecha_venta', fecha_venta);
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=registrar_venta', {
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=registrar_venta', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
