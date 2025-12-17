@@ -183,3 +183,30 @@ async function registrarVenta() {
         console.log("error al registrar venta " + error);
     }
 }
+
+// Eliminar producto temporal
+async function eliminarTemporal(id) {
+    if (!confirm("¿Seguro que deseas eliminar este producto?")) {
+        return;
+    }
+    try {
+        const datos = new FormData();
+        datos.append('id', id);
+        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=eliminar_temporal',{
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                body: datos
+            }
+        );
+        let json = await respuesta.json();
+        if (json.status) {
+            listar_temporales();
+            act_subt_general();
+        } else {
+            alert(json.msg);
+        }
+    } catch (error) {
+        console.log("error al eliminar producto temporal " + error);
+    }
+}

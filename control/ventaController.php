@@ -79,3 +79,16 @@ if ($tipo == "registrar_venta") {
     }
     echo json_encode($respuesta);
 }
+
+// Eliminar producto temporal
+if ($tipo == "eliminar_temporal") {
+    $id = $_POST['id'];
+    $respuesta = array('status' => false, 'msg' => 'fallo el controlador');
+    $eliminar = $objVenta->eliminarTemporal($id);
+    if ($eliminar) {
+        $respuesta = array('status' => true, 'msg' => 'producto eliminado');
+    } else {
+        $respuesta = array('status' => false, 'msg' => 'error al eliminar');
+    }
+    echo json_encode($respuesta);
+}
