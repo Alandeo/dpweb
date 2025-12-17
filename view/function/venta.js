@@ -80,6 +80,15 @@ async function listar_temporales() {
             });
             document.getElementById('lista_compra').innerHTML = lista_temporal;
             act_subt_general();
+        }else {
+            // cuando no hay productos temporales
+            document.getElementById('lista_compra').innerHTML = `
+                <tr>
+                    <td colspan="5" class="text-center text-muted">
+                        No hay productos en la venta
+                    </td>
+                </tr>`;
+            act_subt_general();
         }
     } catch (error) {
         console.log("error al cargar productos temporales " + error);
@@ -126,6 +135,11 @@ async function act_subt_general() {
             document.getElementById('subtotal_general').innerHTML = 'S/. ' + subtotal_general.toFixed(2);
             document.getElementById('igv_general').innerHTML = 'S/. ' + igv;
             document.getElementById('total').innerHTML = 'S/. ' + total;
+        } else {
+            // cuando no hay productos temporales
+            document.getElementById('subtotal_general').innerHTML = 'S/. 0.00';
+            document.getElementById('igv_general').innerHTML = 'S/. 0.00';
+            document.getElementById('total').innerHTML = 'S/. 0.00';
         }
     } catch (error) {
         console.log("error al cargar productos temporales " + error);
