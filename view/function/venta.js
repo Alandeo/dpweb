@@ -192,7 +192,7 @@ async function eliminarTemporal(id) {
     try {
         const datos = new FormData();
         datos.append('id', id);
-        let respuesta = await fetch(base_url + 'control/VentaController.php?tipo=eliminar_temporal',{
+        let respuesta = await fetch(base_url + 'control/ventaController.php?tipo=eliminar_temporal',{
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
